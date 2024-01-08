@@ -8,7 +8,7 @@ include '../models/studentModel.php';
 // }
 $name = (!empty($_GET['name']) ? ($_GET['name']) : 'khong co name');
 // echo $name;
-$data = find($name);
+$data = find_id($name);
 // $hihi = 'heheeh';
 // $ten = find($hihi);
 // echo $ten;
