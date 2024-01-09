@@ -1,0 +1,16 @@
+{
+    "name": "admin/autoload",
+    "autoload": {
+        "psr-4": {
+            "Admin\\Autoload\\": "src/",
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "anhnt-theanh26",
+            "email": "nguyentheanh260204@gmail.com"
+        }
+    ],
+    "require": {}
+}
