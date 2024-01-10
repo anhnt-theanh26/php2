@@ -1,8 +1,8 @@
 {
-    "name": "admin/php2",
+    "name": "administrator/phpdemo",
     "autoload": {
         "psr-4": {
-            "Admin\\Php2\\": "src/"
+            "Administrator\\Phpdemo\\": "src/"
         }
     },
     "authors": [

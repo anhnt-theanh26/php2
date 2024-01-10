@@ -1,5 +1,5 @@
 <?php
-namespace model\sdudentModel;
+namespace phpdemo\src\model\sdudentModel;
 // dùng để viết câu lệnh truy vấn
 class StudentModel // tên của class trùng với tên file
 {
@@ -28,6 +28,7 @@ class StudentModel // tên của class trùng với tên file
         echo 'Detruct';
         // hàm được gọi khi không còn sử dụng đối tượng này nữa
         // gọi câu lệnh là : unset;
+        // GC - auto 
     }
 
     public function __construct2($name, $age)
