@@ -1,5 +1,6 @@
 <?php
-namespace phpdemo\src\model\sdudentModel;
+// namespace src\model\sdudentModel;
+namespace Admin\Phpdemo\models;
 // dùng để viết câu lệnh truy vấn
 class StudentModel // tên của class trùng với tên file
 {

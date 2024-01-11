@@ -1,5 +1,5 @@
 <?php
-namespace phpdemo\src;
+namespace Admin\Phpdemo;
 class People
 {
     public $name;

@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Admin\\Phpdemo\\' => array($baseDir . '/src'),
+    'Admin\\Lab2\\' => array($baseDir . '/src'),
 );

@@ -1,8 +1,8 @@
 {
-    "name": "admin/codelove",
+    "name": "admin/lab2",
     "autoload": {
         "psr-4": {
-            "Admin\\Codelove\\": "src/"
+            "Admin\\Lab2\\": "src/"
         }
     },
     "authors": [
@@ -11,10 +11,5 @@
             "email": "nguyentheanh260204@gmail.com"
         }
     ],
-    "require": {},
-    "autoload-dev": {
-        "psr-4": {
-            "App\\": "app/"
-        }
-    }
+    "require": {}
 }

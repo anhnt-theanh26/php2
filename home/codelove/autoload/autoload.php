@@ -33,6 +33,7 @@
 
 
 spl_autoload_register(function ($class) {
+    echo $class;
     $namespace = "App\\";
     $path = 'app';
     $class = str_replace($namespace, '', $class);
@@ -40,9 +41,10 @@ spl_autoload_register(function ($class) {
     $file = __DIR__ . DIRECTORY_SEPARATOR . $path;
     $file = str_replace('\\', DIRECTORY_SEPARATOR, $file);
     $file = $file . DIRECTORY_SEPARATOR . $class . '.php';
-    if (file_exists($file)) {
-        require_once $file;
-    }
+    echo $file;
+    // if (file_exists($file)) {
+    //     require_once $file;
+    // }
 });
 
 
