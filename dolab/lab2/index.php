@@ -1,5 +1,6 @@
 <?php
-use Core\Database;
+use Admin\Lab2\Database;
+// use Core\Database;
 // require_once("./Database.php");
 // sql_autoload_register(function($class){
 //     var_dump($class);   
@@ -8,6 +9,7 @@ use Core\Database;
 // $db = new DB();
 require_once("./vendor/autoload.php");
 $db = new Database();
+$db->HelloWorld();
 ?>
 <!DOCTYPE html>
 <html lang="en">

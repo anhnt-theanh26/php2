@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Admin\Lab2;
 
 use mysqli;
 
@@ -13,7 +13,7 @@ class Database
         $password = "";
         $conn = new mysqli($servername, $username, $password);
         if (!$conn) {
-            die("connect failed" . $conn->mysqli_error($conn));
+            die("connect failed" . $conn->mysqli_error());
         }
         echo("Connected sucessfully");
     }
