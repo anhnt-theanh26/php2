@@ -37,11 +37,17 @@
                     <tr>
                         <th scope="row"><?= $value['id'] ?></th>
                         <td scope="row"><?= $value['name'] ?></td>
-                        <td scope="row"><?= $value['price'] ?></td>
-                        <td scope="row"><img src="<?= $value['image'] ?>" alt="anh sp" style="width: 100px;"></td>
+                        <td scope="row"><?= number_format($value['price'], 0, 0, '.') ?>đ</td>
+                        <td scope="row"><img src="<?= $value['image'] ?>" alt="ảnh sản phẩm: <?= $value['name'] ?>" style="width: 100px;"></td>
                         <td scope="row"><?= $value['category_name'] ?></td>
 
-                        <td><button type="button" class="btn btn-warning">Sửa</button><button type="button" class="btn btn-danger">Xóa</button></td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-warning">Sửa</button>
+                            <button type="button" class="btn btn-danger">Xóa</button> -->
+                            <a href="index.php?url=update-product&&pro_id=<?=$value['id']?>" class="btn btn-warning">Sửa</a>
+                            <a href="index.php?url=hard-delete-product&&pro_id=<?=$value['id']?>" class="btn btn-danger" onclick="return confirm('bạn chắc chán muốn xóa không')">Xóa cứng</a>
+                            <a href="index.php?url=soft-delete-product&&pro_id=<?=$value['id']?>" class="btn btn-danger" onclick="return confirm('bạn chắc chán muốn xóa không')">Xóa mềm</a>
+                        </td>
                     </tr>
                 <?php
                 }

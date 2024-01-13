@@ -1,0 +1,15 @@
+Validate là gì?
+
+xác thực dữ liệu trước khi xử lý
+-Validate có 2 loại
+ + Validate Clien : html5, js (nâng cao trải nghiệm người dùng)
+ +Validate sever : php
+
+Quy trình Validate:
++ bước 1: xây dựng rules (yêu cầu của từng field)
++ bước 2: xác định messenger trả về
++ bước 3: chạy validate 
+
+
+
+

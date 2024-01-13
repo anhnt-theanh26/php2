@@ -13,6 +13,18 @@
 
     <div class="container mt-5">
         <h2 class="mb-4">Thêm Sản Phẩm</h2>
+        <?php
+        // kiểm tra session lỗi có tồn tại không
+        if (isset($_SESSION['error'])) {
+            $error_message = $_SESSION['error'];
+            foreach ($error_message as $message) {
+                foreach ($message as $mess) {
+                    echo '<div class="alert alert-danger"><?= $mess ?>' . $mess . '</div>';
+                }
+            }
+            unset($_SESSION['error']);
+        }
+        ?>
         <form action="index.php?url=add-product" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="name" class="form-label">Tên Sản Phẩm</label>
@@ -44,6 +56,9 @@
             </div>
 
             <button type="submit" class="btn btn-primary" name="Save">Lưu</button>
+            <a href="index.php?url=/" class="btn btn-primary">Danh sách</a>
+
+
         </form>
     </div>
 

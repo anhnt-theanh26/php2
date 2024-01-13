@@ -11,13 +11,23 @@ switch ($url) {
         break;
 
     case "add-product":
-        getAddProduct();
-        if (isset($_POST["Save"]) && $_POST["Save"]) {
-            $name = $_POST["name"];
-            $price = $_POST["price"];
-            $image = $_POST["image"];
-            $id_category = $_POST["id_category"];
-            echo "$name, $price, $image, $id_category";
+        addProduct();
+        if (isset($_POST["Save"])) {
+            addPro($_POST["name"], $_POST["price"], $_FILES["image"], $_POST["id_category"]);
         }
+        break;
+
+    case "update-product":
+        viewUpdateProduct();
+        if (isset($_POST["update"])) {
+            updatePro($_POST['id'], $_POST["name"], $_POST["price"], $_FILES["image"], $_POST["id_category"]);
+        }
+        break;
+
+    case "hard-delete-product":
+        hardDeletePro();
+        break;
+    case "soft-delete-product":
+        softDeletePro();
         break;
 }
