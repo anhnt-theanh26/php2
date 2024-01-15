@@ -1,0 +1,15 @@
+{
+    "name": "administrator/lab123",
+    "autoload": {
+        "psr-4": {
+            "Administrator\\Lab123\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "anhnt-theanh26",
+            "email": "nguyentheanh260204@gmail.com"
+        }
+    ],
+    "require": {}
+}
