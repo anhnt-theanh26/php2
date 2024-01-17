@@ -14,11 +14,17 @@ switch ($url) {
         break;
     case 'add':
         $carController->viewAddCar();
-        if(isset($_POST['addsanpham'])){
-            $carController->addCar($_POST['name'],$_POST['price'],$_FILES['img'],$_POST['mota']);
+        if (isset($_POST['addsanpham'])) {
+            $carController->addCar($_POST['name'], $_POST['price'], $_FILES['img'], $_POST['mota']);
         }
         break;
-    
+    case 'update':
+        $carController->oneCar();
+        if (isset($_POST['updatesanpham'])) {
+            $carController->updateCar($_POST['id'], $_POST['name'], $_POST['price'], $_FILES['img'], $_POST['mota']);
+        }
+        break;
+
 }
 
 require_once("./src/Views/footer.php");

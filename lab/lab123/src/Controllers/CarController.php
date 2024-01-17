@@ -32,6 +32,18 @@ class CarController
             
         }
     }
+
+    public function oneCar()
+    {
+        $carModel = new CarModel;
+        $car = $carModel->getOneCar($_GET['id']);
+        require_once('./src/Views/sanpham/update.php');
+    }
+
+    public function updateCar($id, $name, $price, $img, $description)
+    {
+        
+    }
 }
 ?>
 <!-- <script>

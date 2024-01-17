@@ -1,0 +1,15 @@
+{
+    "name": "anhnt/demo",
+    "autoload": {
+        "psr-4": {
+            "Anhnt\\Demo\\": "app/",
+        }
+    },
+    "authors": [
+        {
+            "name": "anhnt-theanh26",
+            "email": "nguyentheanh260204@gmail.com"
+        }
+    ],
+    "require": {}
+}

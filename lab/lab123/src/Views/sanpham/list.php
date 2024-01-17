@@ -100,12 +100,12 @@
                                         </i>
                                         View
                                     </a> -->
-                                        <a class="btn btn-info btn-sm" href="index.php?act=suasanpham&&id=<?= $id ?>">
+                                        <a class="btn btn-info btn-sm" href="index.php?url=update&&id=<?= $id ?>">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a onclick="return confirm('xóa mềm sản phẩm')" class="btn btn-danger btn-sm" href="index.php?act=xoamemsanpham&&id=<?= $id ?>">
+                                        <a onclick="return confirm('xóa mềm sản phẩm')" class="btn btn-danger btn-sm" href="index.php?url=xoamemsanpham&&id=<?= $id ?>">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete

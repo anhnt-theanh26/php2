@@ -108,10 +108,6 @@
                     <i class="far fa-circle nav-icon"></i>
                     <p>Thêm sản phẩm</p>
                   </a>
-                  <a href="index.php?url=update" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Sửa sản phẩm</p>
-                  </a>
                   <a href="index.php?url=delete" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Sản phẩm xóa mềm</p>
