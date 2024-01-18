@@ -1,9 +1,10 @@
 <?php
 namespace Admin\Oop;
-
+use Admin\Oop\Shape;
+use Admin\Oop\Action;
 include('./Rectangle.php');
 
-class Square extends Rectangle implements \Shape, \Action
+class Square extends Rectangle implements Shape, Action
 {
 
     // trait: đa kế thừa trong php 
@@ -51,10 +52,6 @@ class Square extends Rectangle implements \Shape, \Action
         // định nghĩa phần thân của phương thức của interface
     }
 
-    function run($w, $h)
-    {
-    }
-    function display($w, $h)
-    {
-    }
+    function runnew($w, $h){}
+    function displaynew($w, $h){}
 }

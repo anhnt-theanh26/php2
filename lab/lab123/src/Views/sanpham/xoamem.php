@@ -1,7 +1,4 @@
 <div class="wrapper">
-
-
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -45,31 +42,31 @@
                                 <th style="width: 1%">
                                     #
                                 </th>
-                                <th style="width: 4%">
+                                <th style="width: 5%">
                                     id
                                 </th>
-                                <th style="width: 20%">
-                                    Tên
-                                </th>
                                 <th style="width: 10%">
-                                    Ảnh
+                                    Tên
                                 </th>
                                 <th style="width: 10%">
                                     Giá
                                 </th>
                                 <th style="width: 10%">
-                                    iddm
+                                    Ảnh
                                 </th>
-                                <th style="width: 10%">
-                                    Đã bán
+                                <th style="width: 30%">
+                                    Mô tả
+                                </th>
+                                <th style="width: 7%">
+                                    Trạng thái
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($sanpham as $sp) {
+                            foreach ($car as $sp) {
                                 extract($sp);
-                                $linkimg = '../../view/img/' . $img_dai_dien;
+                                $linkimg = $img;
                             ?>
                                 <tr>
                                     <td>
@@ -79,7 +76,10 @@
                                         <?= $id ?>
                                     </td>
                                     <td>
-                                        <?= $ten_san_pham ?>
+                                        <?= $name ?>
+                                    </td>
+                                    <td>
+                                        <?= $price ?>
                                     </td>
                                     <td>
                                         <ul class="list-inline">
@@ -89,26 +89,28 @@
                                         </ul>
                                     </td>
                                     <td>
-                                        <?= $gia_san_pham ?>
+                                        <?= $description ?>
                                     </td>
                                     <td>
-                                        <?= $iddm ?>
-                                    </td>
-                                    <td>
-                                        <?= $da_ban ?>
+                                        <?= $status ?>
                                     </td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="index.php?act=khoiphucsanpham&&id=<?= $id ?>">
+                                        <!-- <a class="btn btn-primary btn-sm" href="#">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a> -->
+                                        <a class="btn btn-primary btn-sm" href="index.php?act=restore&&id=<?= $id ?>">
                                             <i class="fas fa-folder">
                                             </i>
                                             Restore
                                         </a>
-                                        <a class="btn btn-info btn-sm" href="index.php?act=suasanpham&&id=<?= $id ?>">
+                                        <a class="btn btn-info btn-sm" href="index.php?url=update&&id=<?= $id ?>">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a onclick="return confirm('xóa mềm sản phẩm')" class="btn btn-danger btn-sm" href="index.php?act=xoasanpham&&id=<?= $id ?>">
+                                        <a onclick="return confirm('xóa cứng sản phẩm')" class="btn btn-danger btn-sm" href="index.php?url=xoacungsanpham&&id=<?= $id ?>">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete

@@ -1,13 +1,13 @@
 <?php
 namespace Admin\Oop;
-
+// use Admin\Oop\Shape2;
 abstract class Rectangle
 {
     public $width;
     public $heigth;
 
     // khai báo sử dụng trait
-    use \Shape2;
+    use Shape2;
 
     abstract function echoInfo();
     abstract function echoName();

@@ -45,7 +45,7 @@
                                 <th style="width: 5%">
                                     id
                                 </th>
-                                <th style="width: 20%">
+                                <th style="width: 10%">
                                     Tên
                                 </th>
                                 <th style="width: 10%">
@@ -54,10 +54,10 @@
                                 <th style="width: 10%">
                                     Ảnh
                                 </th>
-                                <th style="width: 20%">
+                                <th style="width: 30%">
                                     Mô tả
                                 </th>
-                                <th style="width: 10%">
+                                <th style="width: 7%">
                                     Trạng thái
                                 </th>
                             </tr>

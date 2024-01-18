@@ -1,7 +1,8 @@
 <?php
+namespace Admin\Oop;
 
 interface Action
 {
-    function run($w, $h);
-    function display($w, $h);
+    function runnew($w, $h);
+    function displaynew($w, $h);
 }

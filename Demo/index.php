@@ -1,21 +1,26 @@
 <?php
+require_once("./vendor/autoload.php");
+
 use Anhnt\Demo\config\Database;
 use Anhnt\Demo\controllers\Router;
 use Anhnt\Demo\controllers\StudentController;
 
-require_once("./vendor/autoload.php");
 // echo 'emuianhnt';
 
 
 // echo 'Home';
 
-
-
 $route = new Router();
-$route->addRoute('/php2/Demo/index.php/home', function () {
+
+$route->addRoute('/php2/Demo/index.php', function () {
+    echo 'welcome homepage <br>';
+});
+
+$route->addRoute('/php2/Demo/index.php?url=home', function () {
     echo "home";
 });
-$route->addRoute('/php2/Demo/index.php/news', function () {
+
+$route->addRoute('/php2/Demo/index.php?url=news', function () {
     echo ' new page';
 });
 
@@ -23,7 +28,7 @@ $route->addRoute('/php2/Demo/index.php/news', function () {
 // lấy ra function index trong studentController và truyền vào route
 $route->addRoute('/php2/Demo/index.php/student', [new StudentController(), 'index']);
 
-echo 'hihi<br>';
+// echo 'hihi<br>';
 
 
 // datetime php
@@ -33,11 +38,10 @@ echo 'hihi<br>';
 // điều hướng website trong php
 
 
-// gọi trong file index để điều hướng requist
 // gọi trong file index để điều hướng request
 // lấy ra địa chỉ gửi lên từ trình duyệt
 // $_SEVER super global , biến siêu toàn cục
 $url = $_SERVER['REQUEST_URI'];
 // var_dump($_SERVER);
-echo $url;
+echo $url . '<br>';
 $route->getRoute($url);

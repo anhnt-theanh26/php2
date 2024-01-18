@@ -5,9 +5,10 @@ namespace Anhnt\Demo\controllers;
 class Router
 {
 
-    // 1 mảng chứa địa chỉ các action
+    // 1 mảng chứa địa chỉ các action handle
     public $routes = [];
 
+    // hàm thêm route vào dự án
     public function addRoute($url, $handle)
     {
         $this->routes[$url] = $handle;
@@ -15,8 +16,9 @@ class Router
 
     public function getRoute($url)
     {
-        if (array_change_key_case($url, $this->routes[$url])) {
+        if (array_key_exists($url, $this->routes)) {
             $handle = $this->routes[$url];
+            // thực thi function handle
             if (is_callable($handle)) {
                 $handle();
             } else {

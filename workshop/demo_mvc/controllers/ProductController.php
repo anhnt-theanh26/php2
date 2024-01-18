@@ -88,9 +88,9 @@ function updatePro($id, $name, $price, $image, $id_category)
         }
     } else {
         $imageUrl = $product['image'];
-        updateProduct($id, $name, $price, $imageUrl, $id_category);
-        header("location: index.php?url=/");
     }
+    updateProduct($id, $name, $price, $imageUrl, $id_category);
+    header("location: index.php?url=/");
 }
 
 function hardDeletePro()
