@@ -1,8 +1,9 @@
 {
-    "name": "administrator/lab4",
+    "name": "admin/lab4",
     "autoload": {
         "psr-4": {
-            "app\\": "app/"
+            "App\\": "app/", 
+            "Core\\": "core/"
         }
     },
     "authors": [

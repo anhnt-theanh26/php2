@@ -77,7 +77,7 @@ class CarController
     public function hardDeleteCar($id){
         $carModel = new CarModel;
         $carModel->getHardDeleteCar($id);
-        echo "<script>window.location.href = 'index.php?urlsoft-deletescript>";
+        echo "<script>window.location.href = 'index.php?url=soft-delete'<script>";
     }
 }
 ?>

@@ -2,7 +2,7 @@
     "name": "anhnt/demo",
     "autoload": {
         "psr-4": {
-            "Anhnt\\Demo\\": "app/",
+            "Anhnt\\Demo\\": "app/"
         }
     },
     "authors": [
