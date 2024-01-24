@@ -1,5 +1,6 @@
 <?php
 namespace Administrator\Lab123\Models;
+
 require_once "env.php";
 // tạo kết nối từ project php sang mysql
 class Db
@@ -9,8 +10,8 @@ class Db
     {
         $connect = new \PDO(
             "mysql:host=" . DBHOST
-                . ";dbname=" . DBNAME
-                . ";charset=" . DBCHARSET,
+            . ";dbname=" . DBNAME
+            . ";charset=" . DBCHARSET,
             DBUSER,
             DBPASS
         );

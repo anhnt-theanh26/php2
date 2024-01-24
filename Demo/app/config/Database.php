@@ -9,6 +9,9 @@ class Database
     // password
     // phức tạp hơn thì tạo 1 file riêng để chứa các thông tin nhạy cảm 
     public $name;
+
+    
+
     public function __construct($name)
     {
         $this->name = $name;

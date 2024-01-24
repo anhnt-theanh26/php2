@@ -1,6 +1,8 @@
 <?php
 namespace Anhnt\Demo\controllers;
+use Anhnt\Demo\models\Student;
 
+require_once('../base/DBMySQL.php');
 class StudentController
 {
 
@@ -12,14 +14,23 @@ class StudentController
 
     public function edit()
     {
-        
+        echo 'hello file eidt';   
     }
     public function delete()
     {
-        
+        echo 'hello file delete';        
     }
     public function show()
     {
-        
+        echo 'hello file show';     
     }
+
+    // public function login($name, $pass)
+    // {
+    //     $student = new Student();
+    //     $kq = $student->login($username, $password);
+    //     if(isset($kq))
+    //         echo 
+    // }
+
 }
