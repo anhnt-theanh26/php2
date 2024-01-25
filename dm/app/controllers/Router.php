@@ -26,14 +26,9 @@ class Router
 
     public function handleRoute($url, $method)
     {
-        // echo $url . ' ---- ' . $method.'<br>';
-        // echo '<pre>';
-        // // var_dump($this->routes);
-        // echo '<br>';
-        // // echo array_key_exists($url, $this->routes) . '<br>';
-        // echo array_key_exists($url, $this->routes[$method]) . '<br>';
         if (isset($this->routes[$url][$method])) {
             $action = $this->routes[$url][$method];
+
             if (is_callable($action)) {
                 $action();
             } else {

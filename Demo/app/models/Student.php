@@ -1,8 +1,9 @@
 <?php
+
 namespace Anhnt\Demo\models;
 
 use Anhnt\Demo\base\Person;
-use DBMySQL;
+use Anhnt\Demo\base\DBMySQL;
 
 class Student extends Person
 {
@@ -12,31 +13,48 @@ class Student extends Person
     private $sdtPhuHuynh;
     private $idBangDiem;
 
+
     public function login($username, $password)
     {
-        $kq = null;
-        try {
-            $query = "SELECT * FROM students where username='$username' and password='$password';";
-            $stmp = DBMySQL::getDBInstance()->prepare($query);
-            $stmp->bindParam('username', $username);
-            $stmp->execute();
-            $result = $stmp->fetchAll(\PDO::FETCH_ASSOC);
-            if ($stmp->rowCount() > 0) {
-                $first = $result[0];
-                $username = $first['username'];
-                $passwordC = $first['password'];
-                session_start();
-                if ($password == $passwordC) {
-                    $kq = 1;
-                    $_SESSION['user'] = $username;
-                }
-            }
-        } catch (\Throwable $th) {
-            throw $th;
-        }
-        return $kq;
+        $query = "SELECT * FROM students where username='$username' and password='$password';";
+        $db = new DBMySQL();
+        return $db->getData($query, false);
     }
 
+    // public function login($username, $password)
+    // {
+    //     $kq = null;
+    //     try {
+    //         $query = "SELECT * FROM students where username = :username and password = :password;";
+    //         $stmp = DBMySQL::getDBInstance()->prepare($query);
+    //         $stmp->bindParam(':username', $username);
+    //         $stmp->bindParam(':password', $password);
+    //         $stmp->execute();
+    //         $result = $stmp->fetchAll(\PDO::FETCH_ASSOC);
+    //         if ($stmp->rowCount() > 0) {
+    //             $first = $result[0];
+    //             $username = $first['username'];
+    //             $passwordC = $first['password'];
+    //             if ($password == $passwordC) {
+    //                 $kq = 1;
+    //                 $_SESSION['user'] = $username;
+    //             }
+    //         }
+    //     } catch (\PDOException $e) {
+    //         echo $e->getMessage();
+    //     }
+    //     return $kq;
+    // }
+
+
+
+
+    function sigup($username, $password, $img)
+    {
+        $query = "INSERT INTO students(username, password, img) VALUES ('$username','$password','$img');";
+        $db = new DBMySQL();
+        return $db->getData($query, false);
+    }
     public function profile()
     {
         echo 'profile';
@@ -47,4 +65,9 @@ class Student extends Person
         session_destroy();
     }
 
+    public function allAccount(){
+        $query = 'SELECT * FROM students WHERE 1';
+        $db = new DBMySQL();
+        return $db->getData($query, true);
+    }
 }
