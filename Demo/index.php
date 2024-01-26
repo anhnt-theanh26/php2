@@ -50,16 +50,16 @@ if (isset($_SESSION['username'])) {
 $router = new Router();
 $router->get('/php2/Demo/', [new StudentController(), 'index']);
 $router->get('/php2/Demo/index.php', [new StudentController(), 'index']);
-$router->get('/php2/Demo/?showLogin', [new StudentController(), 'showLogin']);
+$router->get('/php2/Demo/?showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
 $router->get('/php2/Demo/?news', [new StudentController(), 'news']);
 $router->get('/php2/Demo/?product', [new StudentController(), 'product']);
-$router->get('/php2/Demo/?logout', [new StudentController(), 'logout']);
-$router->get('/php2/Demo/?showRegister', [new StudentController(), 'showRegister']);
+$router->get('/php2/Demo/?logout', [new StudentController(), 'logout']); // đăng xuất
+$router->get('/php2/Demo/?showRegister', [new StudentController(), 'showRegister']); 
 $router->get('/php2/Demo/?showSigup', [new StudentController(), 'showSigup']);
-$router->get('/php2/Demo/?allAccount', [new StudentController(), 'allAccount']);
-$router->post('/php2/Demo/?login', [new StudentController(), 'login']);
+$router->get('/php2/Demo/?allAccount', [new StudentController(), 'allAccount']); // hiển thị tất cả account
+$router->post('/php2/Demo/?login', [new StudentController(), 'login']); //đăng nhập
 $router->post('/php2/Demo/?register', [new StudentController(), 'register']);
-$router->post('/php2/Demo/?sigup', [new StudentController(), 'sigup']);
+$router->post('/php2/Demo/?sigup', [new StudentController(), 'sigup']); // đăng ký
 
 $url = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];

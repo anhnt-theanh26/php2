@@ -1,5 +1,6 @@
 <?php
 namespace Anhnt\Demo\base;
+
 require_once('env.php');
 
 class DBMySQL
@@ -21,6 +22,28 @@ class DBMySQL
         }
         return $db;
     }
+
+    // static function getDBInstance()
+    // {
+    //     $servername = $_ENV['DBHOST'];
+    //     $username = $_ENV['DBUSER'];
+    //     $password = $_ENV['DBPASS'];
+    //     $database_name = $_ENV['DBUSER'];
+    //     if (!isset($db)) {
+    //         // khoi tao ket noi DB !!!
+    //         self::$db = new \PDO(
+    //             "mysql:host={$servername};
+    //         dbname={$database_name}",
+    //             $username,
+    //             $password
+    //         );
+    //         self::$db->setAttribute(
+    //             \PDO::ATTR_ERRMODE,
+    //             \PDO::ERRMODE_EXCEPTION
+    //         );
+    //     }
+    //     return self::$db;
+    // }
 
 
     // nếu như dùng để lấy danh sách thì sẽ truyền true còn truyền false thì

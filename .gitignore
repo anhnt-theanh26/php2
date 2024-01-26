@@ -1,3 +1,6 @@
 /vendor/
 composer update
 composer dump-autoload
+
+
+composer require vlucas/phpdotenv
