@@ -2,7 +2,6 @@
 
 namespace Anhnt\Demo\controllers;
 
-use Anhnt\Demo\base\DBMySQL;
 use Anhnt\Demo\models\Student;
 
 class StudentController
@@ -24,7 +23,7 @@ class StudentController
     }
     public function show()
     {
-        echo 'hello file show';
+        // echo 'hello file show';
     }
 
 
@@ -106,6 +105,11 @@ class StudentController
         $student = new Student();
         $student->logout();
         echo "<script>window.location.href='index.php?url=home'</script>";
+        if (isset($_GET['logout'])) {
+            $student = new Student();
+            $student->logout();
+            // echo "<script>window.location.href='/php2/Demo/?logout'</script>";
+        }
     }
 
 
@@ -128,6 +132,7 @@ class StudentController
             }
             $check = $student->sigup($username, $password, $imgUrl);
             if (!$check) {
+                $_SESSION['username'] = $username;
                 echo "<script>alert('them thanh cong')</script>";
             }
         }
@@ -139,12 +144,61 @@ class StudentController
         $student = new Student();
         $list = $student->allAccount();
         // var_dump($list);
-        include "./app/views/students/list.php";
+        include "./public/views/students/list.php";
         // echo "<script>window.location.href = './app/views/students/list.php';</script>";
     }
 
     public function register()
     {
         echo 'register';
+    }
+
+
+    // asm
+    function formdangky()
+    {
+        include_once('./public/views/dangky.php');
+    }
+    public function dangky()
+    {
+        if (isset($_POST["dangky"])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $img = $_FILES['img'];
+            $error = [];
+
+            // if (strlen($password) < 8) {
+            //     $error['pass']['sokytu'] = 'pass phai co it nhat 8 ky tu';
+            // }
+            // if (!preg_match('/[a-z]/', $password) || !preg_match('/[A-Z]/', $password)) {
+            //     $error['pass']['khongdung']  = 'pass phai co chu thuong va chu hoa';
+            // }
+            // if (!preg_match('/\d/', $password)) {
+            //     $error['pass']['number'] = 'pass phai co it nhat 1 chu so';
+            // }
+            // if (strlen($username) < 8) {
+            //     $error['user']['sokytu'] = 'name phai co it nhat 8 ky tu';
+            // }
+            // if ($img['size'] > 4 * 1024 * 1024) {
+            //     $error['img']['img'] = 'file anh qua lon';
+            // }
+            if (!empty($error)) {
+                $_SESSION['error'] = $error;
+                header('location: ?url=formdangky');
+            } else {
+                $target_dir = 'public/img/';
+                $target_file = $target_dir . $img['name'];
+                if (move_uploaded_file($img['tmp_name'], $target_file)) {
+                    $imgURL = $target_file;
+                } else {
+                    $imgURL = 'khong co anh';
+                }
+                $student = new Student();
+                $student->dangky($username, $password, $imgURL, $email);
+                $_SESSION['username'] = $username;
+                header('location: ?url=home');
+            }
+        }
     }
 }

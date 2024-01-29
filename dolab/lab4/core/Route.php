@@ -22,11 +22,11 @@ class Route
     {
         $route = explode('?', $requestUrl)[0];
         $action = $this->routes[$route] ?? null;
-        if (!$action) {
-            // throw new RouteNotFoundException();
-            // return new RouteNotFoundException('');
-            echo 'lỗi';
-        }
+        // if (!$action) {
+        //     // throw new RouteNotFoundException();
+        //     // return new RouteNotFoundException('');
+        //     echo 'lỗi';
+        // }
 
         if (is_callable($action)) {
             return call_user_func($action);

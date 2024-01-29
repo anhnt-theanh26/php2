@@ -47,6 +47,35 @@ class Student extends Person
     // }
 
 
+    // public function dangnhap($username, $password)
+    // {
+    //     $kq = null;
+    //     try {
+    //         $query = "select * from students where username = :username and password = :password;";
+    //         $stmp = DBMySQL::getDBInstance()->prepare($query);
+    //         $stmp->bindParam(':username', $username);
+    //         $stmp->bindParam(':password', $password);
+    //         $stmp->execute();
+    //         $result = $stmp->fetchAll(\PDO::FETCH_ASSOC);
+    //         if ($stmp->rowCount() > 0) {
+    //             $first = $result[0];
+    //             $username = $first['username'];
+    //             $passwordC = $first['password'];
+    //             if ($password == $passwordC) {
+    //                 $kq = 1;
+    //                 $_SESSION['username'] = $username;
+    //             }
+    //         }
+    //     } catch (\PDOException $th) {
+    //         echo $th->getMessage();
+    //     }
+    // }
+
+
+    // public function dangky($username, $password, $img){
+    //     $query = "insert into students(username, password, img) values(:username, :password, :img)";
+    //     $img['name'];
+    // }
 
 
     function sigup($username, $password, $img)
@@ -66,9 +95,29 @@ class Student extends Person
         session_destroy();
     }
 
-    public function allAccount(){
+    public function allAccount()
+    {
         $query = 'SELECT * FROM students WHERE 1';
         $db = new DBMySQL();
         return $db->getData($query, true);
+    }
+
+    // asm
+    public function dangky($username, $password, $img, $email)
+    {
+        try {
+            $queryCheck = "SELECT username FROM `students` WHERE username = '$username'";
+            $db = new DBMySQL();
+            $check = $db->getData($queryCheck, false);
+            if ($check) {
+                echo 'Ten dang nhap da ton tai';
+                return -1;
+            } else {
+                $query = "INSERT INTO students(username, password, img, email) VALUES ('$username','$password','$img', '$email');";
+                return $db->getData($query, false);
+            }
+        } catch (\PDOException $th) {
+            echo $th->getMessage();
+        }
     }
 }

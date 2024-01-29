@@ -29,7 +29,7 @@ function addPro($name, $price, $image, $id_category)
     $error = [];
     // validate tên sản phẩm
     if (empty(trim($name))) {
-        $error['name']['required'] = 'Tên sản phẩm không được để trống';
+        $error['name']['required'] = 'Tên sản phẩm không được để trống ';
     } else {
         if (strlen(trim($name)) < 6) {
             $error['name']['length'] = 'Tên sản phẩm phải lớn hơn 6 ký tự';
