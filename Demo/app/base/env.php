@@ -12,4 +12,4 @@ const DBPASS = "a3wAp88A#eM*SE!";
 // const DBNAME = "lab123";
 // const DBCHARSET = "utf8";
 // const DBUSER = "root";
-// const DBPASS = "";
+// const DBPASS = "";   

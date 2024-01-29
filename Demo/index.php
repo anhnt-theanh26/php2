@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+// use Dotenv\Dotenv;
+// $dotenv = Dotenv::createImmutable(__DIR__ ."");
+// $dotenv->load();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,24 +14,24 @@
 
 <body>
     <h1>Welcome to my Site!!</h1>
-    <a href="/php2/Demo/index.php">Home</a><br>
-    <a href="/php2/Demo/?news">News</a><br>
-    <a href="/php2/Demo/?product">product</a><br>
+    <a href="/php2/Demo/index.php?url=home">Home</a><br>
+    <a href="/php2/Demo/index.php?url=news">News</a><br>
+    <a href="/php2/Demo/index.php?url=product">product</a><br>
     <?php
     if (!isset($_SESSION['username'])) {
     ?>
-        <a href="/php2/Demo/?showLogin">Show login</a><br>
+        <a href="/php2/Demo/index.php?url=showLogin">Show login</a><br>
 
     <?php
     }
     ?>
-    <a href="/php2/Demo/?showRegister">Show Register Form</a><br>
-    <a href="/php2/Demo/?showSigup">Show Sig up</a><br>
-    <a href="/php2/Demo/?allAccount">All Account</a><br>
+    <a href="/php2/Demo/index.php?url=showRegister">Show Register Form</a><br>
+    <a href="/php2/Demo/index.php?url=showSigup">Show Sig up</a><br>
+    <a href="/php2/Demo/index.php?url=allAccount">All Account</a><br>
     <?php
     if (isset($_SESSION['username'])) {
     ?>
-        <a href="/php2/Demo/?logout">LOGOUT</a><br>
+        <a href="/php2/Demo/index.php?url=logout">LOGOUT</a><br>
     <?php
     }
     ?>
@@ -48,21 +52,30 @@ if (isset($_SESSION['username'])) {
 }
 
 $router = new Router();
-$router->get('/php2/Demo/', [new StudentController(), 'index']);
-$router->get('/php2/Demo/index.php', [new StudentController(), 'index']);
-$router->get('/php2/Demo/?showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
-$router->get('/php2/Demo/?news', [new StudentController(), 'news']);
-$router->get('/php2/Demo/?product', [new StudentController(), 'product']);
-$router->get('/php2/Demo/?logout', [new StudentController(), 'logout']); // đăng xuất
-$router->get('/php2/Demo/?showRegister', [new StudentController(), 'showRegister']); 
-$router->get('/php2/Demo/?showSigup', [new StudentController(), 'showSigup']);
-$router->get('/php2/Demo/?allAccount', [new StudentController(), 'allAccount']); // hiển thị tất cả account
-$router->post('/php2/Demo/?login', [new StudentController(), 'login']); //đăng nhập
-$router->post('/php2/Demo/?register', [new StudentController(), 'register']);
-$router->post('/php2/Demo/?sigup', [new StudentController(), 'sigup']); // đăng ký
+$router->get('/', [new StudentController(), 'index']);
+$router->get('home', [new StudentController(), 'index']);
+$router->get('showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
+$router->get('news', [new StudentController(), 'news']);
+$router->get('product', [new StudentController(), 'product']);
+$router->get('logout', [new StudentController(), 'logout']); // đăng xuất
+$router->get('showRegister', [new StudentController(), 'showRegister']); 
+$router->get('showSigup', [new StudentController(), 'showSigup']);
+$router->get('allAccount', [new StudentController(), 'allAccount']); // hiển thị tất cả account
+// $router->get('fix', [new StudentController(), 'fix']);
+$router->post('login', [new StudentController(), 'login']); //đăng nhập
+$router->post('register', [new StudentController(), 'register']);
+$router->post('sigup', [new StudentController(), 'sigup']); // đăng ký
 
-$url = $_SERVER['REQUEST_URI'];
+
+if(isset($_GET['url'])){
+    $url = $_GET['url'];
+}else{
+    $url = '/';
+}
+
+
+// $url = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
-// echo $url . ' -- ' . $method . '<br>';
+echo $url . ' -- ' . $method . '<br>';
 $router->handleRoute($url, $method);
 ?>
