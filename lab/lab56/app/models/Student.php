@@ -1,9 +1,9 @@
 <?php
 
-namespace Anhnt\Demo\models;
+namespace Anhnt\Lab56\models;
 
-use Anhnt\Demo\base\Person;
-use Anhnt\Demo\base\DBMySQL;
+use Anhnt\Lab56\base\Person;
+use Anhnt\Lab56\base\DBMySQL;
 
 class Student extends Person
 {

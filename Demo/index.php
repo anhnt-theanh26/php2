@@ -15,10 +15,10 @@
     <a href="/php2/Demo/?product">product</a><br>
     <?php
     if (!isset($_SESSION['username'])) {
-    ?>
+        ?>
         <a href="/php2/Demo/?showLogin">Show login</a><br>
 
-    <?php
+        <?php
     }
     ?>
     <a href="/php2/Demo/?showRegister">Show Register Form</a><br>
@@ -26,9 +26,9 @@
     <a href="/php2/Demo/?allAccount">All Account</a><br>
     <?php
     if (isset($_SESSION['username'])) {
-    ?>
+        ?>
         <a href="/php2/Demo/?logout">LOGOUT</a><br>
-    <?php
+        <?php
     }
     ?>
 </body>
@@ -49,12 +49,12 @@ if (isset($_SESSION['username'])) {
 
 $router = new Router();
 $router->get('/php2/Demo/', [new StudentController(), 'index']);
-$router->get('/php2/Demo/index.php', [new StudentController(), 'index']);
+$router->get('/php2/Demo/index.php', [new ProductController(), 'listPRO']);
 $router->get('/php2/Demo/?showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
 $router->get('/php2/Demo/?news', [new StudentController(), 'news']);
 $router->get('/php2/Demo/?product', [new StudentController(), 'product']);
 $router->get('/php2/Demo/?logout', [new StudentController(), 'logout']); // đăng xuất
-$router->get('/php2/Demo/?showRegister', [new StudentController(), 'showRegister']); 
+$router->get('/php2/Demo/?showRegister', [new StudentController(), 'showRegister']);
 $router->get('/php2/Demo/?showSigup', [new StudentController(), 'showSigup']);
 $router->get('/php2/Demo/?allAccount', [new StudentController(), 'allAccount']); // hiển thị tất cả account
 $router->post('/php2/Demo/?login', [new StudentController(), 'login']); //đăng nhập
@@ -66,3 +66,8 @@ $method = $_SERVER['REQUEST_METHOD'];
 // echo $url . ' -- ' . $method . '<br>';
 $router->handleRoute($url, $method);
 ?>
+
+<?php
+include_once('./app/views/header.php');
+include_once('./app/views/home.php');
+include_once('./app/views/footer.php');

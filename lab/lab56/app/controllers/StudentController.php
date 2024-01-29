@@ -1,8 +1,9 @@
 <?php
 
-namespace Anhnt\Demo\controllers;
+namespace Anhnt\Lab56\controllers;
 
-use Anhnt\Demo\models\Student;
+use Anhnt\Lab56\base\DBMySQL;
+use Anhnt\Lab56\models\Student;
 
 class StudentController
 {
@@ -23,7 +24,7 @@ class StudentController
     }
     public function show()
     {
-        // echo 'hello file show';
+        echo 'hello file show';
     }
 
 
@@ -48,7 +49,7 @@ class StudentController
     public function showLogin()
     {
         echo '
-            <form action="/php2/Demo/?login" method="post" enctype="application/x-www-form-urlencoded"><br>
+            <form action="/php2/lab/lab56/?login" method="post" enctype="application/x-www-form-urlencoded"><br>
                 <input type="text" name="username" id="" placeholder="Nhap username....."><br>
                 <input type="password" name="password" id="" placeholder="Nhap password....."><br>
                 <button type="submit">Login</button>
@@ -60,7 +61,7 @@ class StudentController
     function showSigup()
     {
         echo '
-            <form action="/php2/Demo/?sigup" method="post" enctype="multipart/form-data"><br>
+            <form action="/php2/lab/lab56/?sigup" method="post" enctype="multipart/form-data"><br>
                 <input type="text" name="username" id="" placeholder="Nhap username....."><br>
                 <input type="password" name="password" id="" placeholder="Nhap password....."><br>
                 <input type="file" name="img" id="" placeholder="Nhap img....."><br>
