@@ -168,21 +168,33 @@ class StudentController
             $img = $_FILES['img'];
             $error = [];
 
-            // if (strlen($password) < 8) {
-            //     $error['pass']['sokytu'] = 'pass phai co it nhat 8 ky tu';
-            // }
-            // if (!preg_match('/[a-z]/', $password) || !preg_match('/[A-Z]/', $password)) {
-            //     $error['pass']['khongdung']  = 'pass phai co chu thuong va chu hoa';
-            // }
-            // if (!preg_match('/\d/', $password)) {
-            //     $error['pass']['number'] = 'pass phai co it nhat 1 chu so';
-            // }
-            // if (strlen($username) < 8) {
-            //     $error['user']['sokytu'] = 'name phai co it nhat 8 ky tu';
-            // }
-            // if ($img['size'] > 4 * 1024 * 1024) {
-            //     $error['img']['img'] = 'file anh qua lon';
-            // }
+            if (strlen($password) < 8) {
+                $error['pass']['sokytu'] = 'pass phai co it nhat 8 ky tu';
+            }
+            if (!preg_match('/[a-z]/', $password) ) {
+                $error['pass']['khongdung']  = 'pass phai co chu thuong';
+            }
+            if(!preg_match('/[A-Z]/', $password)){
+                $error['pass']['khongdung']  = 'pass phai co chu hoa';
+            }
+            if (!preg_match('/\d/', $password)) {
+                $error['pass']['number'] = 'pass phai co it nhat 1 chu so';
+            }
+            if ($img['size'] > 4 * 1024 * 1024) {
+                $error['img']['img'] = 'file anh qua lon';
+            }
+            if (strlen($username) < 8) {
+                $error['user']['sokytu'] = 'name phai co it nhat 8 ky tu';
+            }
+            if (!preg_match('/[a-z]/', $username)) {
+                $error['user']['wordLower'] = 'name phai co it nhat  1 chu thuong';
+            }
+            if (!preg_match('/[A-Z]/', $username)) {
+                $error['user']['wordUpper'] = 'name phai co it nhat 1 chu hoa';
+            }
+            if (!preg_match('/\d/', $username)) {
+                $error['user']['number'] = 'name phai co it nhat 1 chu co';
+            }
             if (!empty($error)) {
                 $_SESSION['error'] = $error;
                 header('location: ?url=formdangky');
@@ -196,9 +208,35 @@ class StudentController
                 }
                 $student = new Student();
                 $student->dangky($username, $password, $imgURL, $email);
-                $_SESSION['username'] = $username;
+                $loginMess = $student->login($username, $password);
+                if (is_array($loginMess)) {
+                    $_SESSION['username'] = $loginMess;
+                    header('location: ?url=home');
+                }
+            }
+        }
+    }
+
+    function dangnhap()
+    {
+        if (isset($_POST['dangnhap'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $student = new Student();
+            $loginMess = $student->login($username, $password);
+            if (is_array($loginMess)) {
+                $_SESSION['username'] = $loginMess;
                 header('location: ?url=home');
             }
+        }
+    }
+
+
+    function dangxuat()
+    {
+        if (isset($_SESSION['username'])) {
+            unset($_SESSION['username']);
+            header('location: ?url=home');
         }
     }
 }

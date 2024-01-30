@@ -1,8 +1,13 @@
+<style>
+  footer{
+    margin-top: 100px;
+  }
+</style>
 <footer class="box_footer row mb demo">
   <div id="footer">
     <div class="footer-left">
       <div class="footer-logo">
-        <img src="./img/FPTShop_logo.jpg" alt="" />
+        <img src="./public/img/FPTShop_logo.jpg" alt="" />
       </div>
       <div class="card_1">
         <h3>CÔNG TY ĐIỆN TỬ FPT SỐ 1 VIỆT NAM</h3>
@@ -35,15 +40,15 @@
 
         <div class="images">
           <div class="image">
-            <img src="./img/anh4.jpg" alt="" />
+            <img src="./public/img/anh4.jpg" alt="" />
           </div>
           <div class="image">
-            <img src="./img/anh1.jpg" alt="" />
+            <img src="./public/img/anh1.jpg" alt="" />
           </div>
         </div>
 
         <div class="image_3 image">
-          <img src="./img/anh2.jpg" alt="" />
+          <img src="./public/img/anh2.jpg" alt="" />
         </div>
       </div>
     </div>

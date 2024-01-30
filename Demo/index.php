@@ -13,14 +13,8 @@ use Anhnt\Demo\controllers\ProductController;
 
 include_once('./public/views/header.php');
 
-// if (isset($_SESSION['username'])) {
-//     echo '<br>xin chào: ' . $_SESSION['username'] . '<br>';
-// } 
-// else {
-//     echo 'login<br>';
-// }
-
 $router = new Router();
+// demo
 // $router->get('', [new StudentController(), 'index']);
 // $router->get('showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
 // $router->get('news', [new StudentController(), 'news']);
@@ -36,12 +30,17 @@ $router = new Router();
 //get
 $router->get('/', [new ProductController(), 'listPRO']);
 $router->get('home', [new ProductController(), 'listPRO']);
-$router->get('formdangky', [new ProductController(), 'formdangky']); // hien thi dang ky
-
+$router->get('formdangky', [new StudentController(), 'formdangky']); // hien thi dang ky
+$router->get('dangxuat', [new StudentController(), 'dangxuat']); // dang xuat
+$router->get('cart', [new ProductController(),'cart']);
+$router->get('product', [new ProductController(),'listPRO']);
+$router->get('xoaMotSpCart', [new ProductController(),'deleteCart']);
+$router->get('unsetCart', [new ProductController(),'unsetCart']);
 
 //post
 $router->post('dangky', [new StudentController(),'dangky']);
-
+$router->post('dangnhap', [new StudentController(),'dangnhap']);
+$router->post('addtocart', [new ProductController(),'addtocart']);
 if (isset($_GET['url'])) {
     $url = $_GET['url'];
 } else {
@@ -53,8 +52,5 @@ if (isset($_GET['url'])) {
 $method = $_SERVER['REQUEST_METHOD'];
 // echo $url . ' -- ' . $method . '<br>';
 $router->handleRoute($url, $method);
-?>
 
-<?php
-include_once('./public/views/home.php');
 include_once('./public/views/footer.php');

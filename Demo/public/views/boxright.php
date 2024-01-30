@@ -1,20 +1,29 @@
 <div class="boxright">
 
     <div class="mb">
-        <div class="box_title">TÀI KHOẢN</div>
+        <div class="box_title">TÀI KHOẢN</div><br>
         <?php
         if (isset($_SESSION['username']) && $_SESSION['username']) {
-            echo 'XIn chao' . $_SESSION['username'];
+            // var_dump($_SESSION['username']);
+            extract($_SESSION['username']);
+            echo 'Xin chao: ' . $username . '<br>';
+            echo '<img src="' . $img . '" alt=""  width="50px" style="border-radius: 50%;"> <br>';
+        ?>
+            <a href="?url=dangxuat">Dăng xuat</a>
+        <?php
         } else {
         ?>
+
             <div class="box_content form_account">
-                <form action="?url=login" method="POST"></form>
-                <h4>Tên đăng nhập</h4><br>
-                <input type="text" name="username" id="">
-                <h4>Mật khẩu</h4><br>
-                <input type="password" name="password" id=""><br>
-                <input type="checkbox" name="" id="">Ghi nhớ tài khoản?
-                <br><input type="submit" value="Đăng nhập">
+                <form action="?url=dangnhap" method="POST">
+
+                    <h4>Tên đăng nhập</h4><br>
+                    <input type="text" name="username" id="">
+                    <h4>Mật khẩu</h4><br>
+                    <input type="password" name="password" id=""><br>
+                    <input type="checkbox" name="" id="">Ghi nhớ tài khoản?
+                    <br><input type="submit" value="Đăng nhập" name="dangnhap">
+                </form>
                 <li class="form_li"><a href="#">Quên mật khẩu</a></li>
                 <li class="form_li"><a href="?url=formdangky">Đăng kí thành viên</a></li>
             </div>

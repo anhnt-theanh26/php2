@@ -9,11 +9,15 @@
    <link rel="stylesheet" href="./public/css/css.css">
    <script src="https://kit.fontawesome.com/509cc166d7.js" crossorigin="anonymous"></script>
    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-   <!-- <style>
-      form li a{
-        
+   <style>
+      #totalProduct {
+         color: #fff;
+         background-color: red;
+         font-size: 12px;
+         padding: 5px;
+         border-radius: 50%;
       }
-    </style> -->
+   </style>
 </head>
 
 <body>
@@ -34,36 +38,39 @@
                      <a href="">Laptop</a>
                   </div> -->
                <li class="dropdown">
-                  <a class="dropdownbtn" href="">Danh mục</a>
+                  <a class="dropdownbtn" href="?url=news">Tin tức</a>
                   <!-- <div class="dropdown_content">
                      <a href="">Đồng hồ</a>
                      <a href="">Điện thoại</a>
                      <a href="">Laptop</a>
                   </div> -->
                <li class="dropdown">
-                  <a class="dropdownbtn" href="/php2/Demo/?product">Sản Phẩm</a>
+                  <a class="dropdownbtn" href="?url=product">Sản Phẩm</a>
                   <!-- <div class="dropdown_content">
                      <a href="">Đồng hồ</a>
                      <a href="">Điện thoại</a>
                      <a href="">Laptop</a>
                   </div> -->
                <li class="dropdown">
-                  <a class="dropdownbtn" href="">Bình luận</a>
+                  <a class="dropdownbtn" href="?url=product">Bình luận</a>
                   <!-- <div class="dropdown_content">
                      <a href="">Đồng hồ</a>
                      <a href="">Điện thoại</a>
                      <a href="">Laptop</a>
                   </div> -->
                </li>
-               <li class="dropdown">
-                  <a class="dropdownbtn" href="">Giỏ hàng</a>
-                  <!-- <div class="dropdown_content">
+               <!-- <li class="dropdown">
+                  <a class="dropdownbtn" href="?url=cart">Giỏ hàng <span>2</span></a>
+                  <div class="dropdown_content">
                      <a href="">Đồng hồ</a>
                      <a href="">Điện thoại</a>
                      <a href="">Laptop</a>
-                  </div> -->
+                  </div>
+               </li> -->
+               <li class="dropdown">
+                  <a class="dropdownbtn" href="?url=cart">Giỏ hàng</a>
+                  <span id="totalProduct"><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?></span>
                </li>
-
             </ul>
          </div>
       </header>
