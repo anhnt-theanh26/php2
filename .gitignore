@@ -2,5 +2,7 @@
 composer update
 composer dump-autoload
 
+            "Anhnt\\Demo\\": "app/"
 
 composer require vlucas/phpdotenv
+composer require eftec/bladeone

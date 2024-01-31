@@ -28,7 +28,7 @@ class Router
     {
         // echo $url . ' ---- ' . $method.'<br>';
         // echo '<pre>';
-        // // var_dump($this->routes);
+        // var_dump($this->routes);    
         // echo '<br>';
         // // echo array_key_exists($url, $this->routes) . '<br>';
         // echo array_key_exists($url, $this->routes[$method]) . '<br>';

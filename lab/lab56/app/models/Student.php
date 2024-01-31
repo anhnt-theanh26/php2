@@ -14,12 +14,12 @@ class Student extends Person
     private $idBangDiem;
 
 
-    public function login($username, $password)
-    {
-        $query = "SELECT * FROM students where username='$username' and password='$password';";
-        $db = new DBMySQL();
-        return $db->getData($query, false);
-    }
+    // public function login($username, $password)
+    // {
+    //     $query = "SELECT * FROM students where username='$username' and password='$password';";
+    //     $db = new DBMySQL();
+    //     return $db->getData($query, false);
+    // }
 
     // public function login($username, $password)
     // {
@@ -47,43 +47,48 @@ class Student extends Person
     // }
 
 
-    // public function dangnhap($username, $password)
-    // {
-    //     $kq = null;
-    //     try {
-    //         $query = "select * from students where username = :username and password = :password;";
-    //         $stmp = DBMySQL::getDBInstance()->prepare($query);
-    //         $stmp->bindParam(':username', $username);
-    //         $stmp->bindParam(':password', $password);
-    //         $stmp->execute();
-    //         $result = $stmp->fetchAll(\PDO::FETCH_ASSOC);
-    //         if ($stmp->rowCount() > 0) {
-    //             $first = $result[0];
-    //             $username = $first['username'];
-    //             $passwordC = $first['password'];
-    //             if ($password == $passwordC) {
-    //                 $kq = 1;
-    //                 $_SESSION['username'] = $username;
-    //             }
-    //         }
-    //     } catch (\PDOException $th) {
-    //         echo $th->getMessage();
-    //     }
-    // }
-
-
-    // public function dangky($username, $password, $img){
-    //     $query = "insert into students(username, password, img) values(:username, :password, :img)";
-    //     $img['name'];
-    // }
-
-
-    function sigup($username, $password, $img)
+    public function login($username, $password)
     {
-        $query = "INSERT INTO students(username, password, img) VALUES ('$username','$password','$img');";
-        $db = new DBMySQL();
-        return $db->getData($query, false);
+        $query = "SELECT * FROM students WHERE username=:username AND password=:password";
+        $stmp = DBMySQL::getDBInstance()->prepare($query);
+        $stmp->bindParam(":username", $username);
+        $stmp->bindParam(":password", $password);
+        $stmp->execute();
+        $result = $stmp->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
     }
+
+
+    public function sigup($username, $password, $img)
+    {
+        $query = "SELECT * FROM students WHERE username=:username";
+        $stmp = DBMySQL::getDBInstance()->prepare($query);
+        $stmp->bindParam(":username", $username);
+        $stmp->execute();
+        if ($stmp->rowCount() > 0) {
+            echo "ten tai khoan da ton tai";
+            return true;
+        } else {
+            $query = "INSERT INTO students(username, password, img) VALUES (:username, :password, :img);";
+            $stmp = DBMySQL::getDBInstance()->prepare($query);
+            $stmp->bindParam(":username", $username);
+            $stmp->bindParam(":password", $password);
+            $stmp->bindParam(":img", $img);
+            $stmp->execute();
+            return false;
+        }
+    }
+
+
+    // function sigup($username, $password, $img)
+    // {
+    //     $query = "INSERT INTO students(username, password, img) VALUES ('$username','$password','$img');";
+    //     $db = new DBMySQL();
+    //     $_SESSION['username']= $this->login($username, $password);
+    //     return $db->getData($query, false);
+    // }
+
+
     public function profile()
     {
         echo 'profile';

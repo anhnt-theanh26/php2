@@ -91,7 +91,7 @@ class Student extends Person
 
     public function logout()
     {
-        session_unset();
+        // session_unset();
         session_destroy();
     }
 
@@ -100,5 +100,24 @@ class Student extends Person
         $query = 'SELECT * FROM students WHERE 1';
         $db = new DBMySQL();
         return $db->getData($query, true);
+    }
+
+    // asm
+    public function dangky($username, $password, $img, $email)
+    {
+        try {
+            $queryCheck = "SELECT username FROM `students` WHERE username = '$username'";
+            $db = new DBMySQL();
+            $check = $db->getData($queryCheck, false);
+            if ($check) {
+                echo 'Ten dang nhap da ton tai';
+                return -1;
+            } else {
+                $query = "INSERT INTO students(username, password, img, email) VALUES ('$username','$password','$img', '$email');";
+                return $db->getData($query, false);
+            }
+        } catch (\PDOException $th) {
+            echo $th->getMessage();
+        }
     }
 }

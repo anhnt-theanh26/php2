@@ -1,73 +1,56 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMIUANHNT</title>
-</head>
-
-<body>
-    <h1>Welcome to my Site!!</h1>
-    <a href="/php2/Demo/index.php">Home</a><br>
-    <a href="/php2/Demo/?news">News</a><br>
-    <a href="/php2/Demo/?product">product</a><br>
-    <?php
-    if (!isset($_SESSION['username'])) {
-        ?>
-        <a href="/php2/Demo/?showLogin">Show login</a><br>
-
-        <?php
-    }
-    ?>
-    <a href="/php2/Demo/?showRegister">Show Register Form</a><br>
-    <a href="/php2/Demo/?showSigup">Show Sig up</a><br>
-    <a href="/php2/Demo/?allAccount">All Account</a><br>
-    <?php
-    if (isset($_SESSION['username'])) {
-        ?>
-        <a href="/php2/Demo/?logout">LOGOUT</a><br>
-        <?php
-    }
-    ?>
-</body>
-
-</html>
-
 <?php
+session_start();
 require_once("./vendor/autoload.php");
+
+// use Dotenv\Dotenv;
+// $dotenv = Dotenv::createImmutable(__DIR__ ."");
+// $dotenv->load();
+
 
 use Anhnt\Demo\controllers\Router;
 use Anhnt\Demo\controllers\StudentController;
+use Anhnt\Demo\controllers\ProductController;
 
-if (isset($_SESSION['username'])) {
-    echo '<br>xin chào: ' . $_SESSION['username'] . '<br>';
-} else {
-    echo 'login<br>';
-}
+include_once('./public/views/header.php');
 
 $router = new Router();
-$router->get('/php2/Demo/', [new StudentController(), 'index']);
-// $router->get('/php2/Demo/index.php', [new ProductController(), 'listPRO']);
-$router->get('/php2/Demo/?showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
-$router->get('/php2/Demo/?news', [new StudentController(), 'news']);
-$router->get('/php2/Demo/?product', [new StudentController(), 'product']);
-$router->get('/php2/Demo/?logout', [new StudentController(), 'logout']); // đăng xuất
-$router->get('/php2/Demo/?showRegister', [new StudentController(), 'showRegister']);
-$router->get('/php2/Demo/?showSigup', [new StudentController(), 'showSigup']);
-$router->get('/php2/Demo/?allAccount', [new StudentController(), 'allAccount']); // hiển thị tất cả account
-$router->post('/php2/Demo/?login', [new StudentController(), 'login']); //đăng nhập
-$router->post('/php2/Demo/?register', [new StudentController(), 'register']);
-$router->post('/php2/Demo/?sigup', [new StudentController(), 'sigup']); // đăng ký
+// demo
+// $router->get('', [new StudentController(), 'index']);
+// $router->get('showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
+// $router->get('news', [new StudentController(), 'news']);
+// $router->get('product', [new StudentController(), 'product']);
+// $router->get('logout', [new StudentController(), 'logout']); // đăng xuất
+// $router->get('showRegister', [new StudentController(), 'showRegister']);
+// $router->get('showSigup', [new StudentController(), 'showSigup']);
+// $router->get('allAccount', [new StudentController(), 'allAccount']); // hiển thị tất cả account
+// $router->post('login', [new StudentController(), 'login']); //đăng nhập
+// $router->post('register', [new StudentController(), 'register']);
+// $router->post('sigup', [new StudentController(), 'sigup']); // đăng ký
 
-$url = $_SERVER['REQUEST_URI'];
+//get
+$router->get('/', [new ProductController(), 'listPRO']);
+$router->get('home', [new ProductController(), 'listPRO']);
+$router->get('formdangky', [new StudentController(), 'formdangky']); // hien thi dang ky
+$router->get('dangxuat', [new StudentController(), 'dangxuat']); // dang xuat
+$router->get('cart', [new ProductController(),'cart']);
+$router->get('product', [new ProductController(),'listPRO']);
+$router->get('xoaMotSpCart', [new ProductController(),'deleteCart']);
+$router->get('unsetCart', [new ProductController(),'unsetCart']);
+
+//post
+$router->post('dangky', [new StudentController(),'dangky']);
+$router->post('dangnhap', [new StudentController(),'dangnhap']);
+$router->post('addtocart', [new ProductController(),'addtocart']);
+if (isset($_GET['url'])) {
+    $url = $_GET['url'];
+} else {
+    $url = '/';
+}
+
+
+// $url = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 // echo $url . ' -- ' . $method . '<br>';
 $router->handleRoute($url, $method);
-?>
 
-<?php
-include_once('./app/views/header.php');
-include_once('./app/views/home.php');
-include_once('./app/views/footer.php');
+include_once('./public/views/footer.php');

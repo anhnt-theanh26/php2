@@ -1,4 +1,5 @@
 <?php
+
 namespace Anhnt\Demo\models;
 
 use Anhnt\Demo\base\DBMySQL;
@@ -7,8 +8,8 @@ class Product
 {
     public function listSP()
     {
-        $query = "SELECT * FROM products WHERE status = '0';";
+        $query = "SELECT * FROM products WHERE trangthai = '0';";
         $db = new DBMySQL;
-        $db->getData($query, true);
+        return $db->getData($query, true);
     }
 }
