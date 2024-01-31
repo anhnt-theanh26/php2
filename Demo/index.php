@@ -49,7 +49,7 @@ if (isset($_SESSION['username'])) {
 
 $router = new Router();
 $router->get('/php2/Demo/', [new StudentController(), 'index']);
-$router->get('/php2/Demo/index.php', [new ProductController(), 'listPRO']);
+// $router->get('/php2/Demo/index.php', [new ProductController(), 'listPRO']);
 $router->get('/php2/Demo/?showLogin', [new StudentController(), 'showLogin']); // hiển thị đăng nhập
 $router->get('/php2/Demo/?news', [new StudentController(), 'news']);
 $router->get('/php2/Demo/?product', [new StudentController(), 'product']);
