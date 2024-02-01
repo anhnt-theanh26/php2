@@ -3,7 +3,7 @@
         'name' => 'anhnt/demo',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd4e123941c7d0c59d170d9d59b05ef97414a4b29',
+        'reference' => '6d8e4d9d49ef9ae8b2eb7d348d81e35a1a61f315',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'anhnt/demo' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd4e123941c7d0c59d170d9d59b05ef97414a4b29',
+            'reference' => '6d8e4d9d49ef9ae8b2eb7d348d81e35a1a61f315',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -104,7 +104,7 @@ class StudentController
     {
         $student = new Student();
         $student->logout();
-        echo "<script>window.location.href='index.php?url=home'</script>";
+        echo "<script>window.location.href='?url=/'</script>";
         if (isset($_GET['logout'])) {
             $student = new Student();
             $student->logout();
@@ -153,8 +153,8 @@ class StudentController
         echo 'register';
     }
 
-
-    // asm
+    // end demo
+    // asm php1
     function formdangky()
     {
         include_once('./public/views/dangky.php');
@@ -167,34 +167,44 @@ class StudentController
             $email = $_POST['email'];
             $img = $_FILES['img'];
             $error = [];
-
+            //pass
             if (strlen($password) < 8) {
-                $error['pass']['sokytu'] = 'pass phai co it nhat 8 ky tu';
+                $error['pass']['sokytu'] = 'mật khẩu phải lớn hơn 8 ký tự';
             }
             if (!preg_match('/[a-z]/', $password)) {
-                $error['pass']['khongdung'] = 'pass phai co chu thuong';
+                $error['pass']['khongdung'] = 'mật khẩu phải có chữ thường';
             }
             if (!preg_match('/[A-Z]/', $password)) {
-                $error['pass']['khongdung'] = 'pass phai co chu hoa';
+                $error['pass']['khongdung'] = 'mật khẩu phải có chữ hoa';
             }
             if (!preg_match('/\d/', $password)) {
-                $error['pass']['number'] = 'pass phai co it nhat 1 chu so';
+                $error['pass']['number'] = 'mật khẩu phải có 1 số';
             }
-            if ($img['size'] > 4 * 1024 * 1024) {
-                $error['img']['img'] = 'file anh qua lon';
-            }
+            //name
             if (strlen($username) < 8) {
-                $error['user']['sokytu'] = 'name phai co it nhat 8 ky tu';
+                $error['user']['sokytu'] = 'tên đăng nhập phải lớn hơn 8 ký tự';
             }
             if (!preg_match('/[a-z]/', $username)) {
-                $error['user']['wordLower'] = 'name phai co it nhat  1 chu thuong';
+                $error['user']['wordLower'] = 'tên đăng nhập phải có chữ thường';
             }
             if (!preg_match('/[A-Z]/', $username)) {
-                $error['user']['wordUpper'] = 'name phai co it nhat 1 chu hoa';
+                $error['user']['wordUpper'] = 'tên đăng nhập phải có chữ hoa';
             }
             if (!preg_match('/\d/', $username)) {
-                $error['user']['number'] = 'name phai co it nhat 1 chu co';
+                $error['user']['number'] = 'tên đăng nhập phải có 1 só';
             }
+            //img
+            if ($img['size'] > 4 * 1024 * 1024) {
+                $error['img']['img'] = 'file ảnh quá lớn';
+            }
+            if (!empty($img['name'])) {
+                $imgInfo = pathinfo($img['tmp_name']);
+                $extension = strtolower($imgInfo['extension']);
+                if (!in_array($extension, array('jpg', 'png', 'jpeg'))) {
+                    $error['img']['file'] = 'file ảnh sai dịnh dạng (jpg, png, jpeg)';
+                }
+            }
+            // error
             if (!empty($error)) {
                 $_SESSION['error'] = $error;
                 header('location: ?url=formdangky');
@@ -226,11 +236,10 @@ class StudentController
             $loginMess = $student->login($username, $password);
             if (is_array($loginMess)) {
                 $_SESSION['username'] = $loginMess;
-                header('location: ?url=home');
+                header('location: ?url=/');
             } else {
                 $message = urldecode('tai khoan khong ton tai <br> vui long dang ky tai khoan');
                 header('location: ?url=formdangky&&error=' . $message);
-
             }
         }
     }
@@ -240,7 +249,7 @@ class StudentController
     {
         if (isset($_SESSION['username'])) {
             unset($_SESSION['username']);
-            header('location: ?url=home');
+            header('location: ?url=/');
         }
     }
 }

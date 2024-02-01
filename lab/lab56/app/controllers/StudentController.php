@@ -12,20 +12,25 @@ class StudentController
     // viết và xử lý logic liên quan Student
     public function index()
     {
-        // echo  __DIR__ . '/../public/views';
+        echo __DIR__ . '/views';
         $views = './app/views';
         $cache = './app/cache';
-        $blade = new BladeOne($views, $cache, BladeOne::MODE_DEBUG);
+        $blade = new BladeOne(
+            $views,
+            $cache,
+            BladeOne::MODE_DEBUG
+        ); // MODE_DEBUG allows to pinpoint troubles.
         echo $blade->run(
-            'index',
+            "index",
             array(
-                'variable1' => 'value1',
-                'varr' => '<h1>HELLO</h1>',
+                "variable1" => "value1",
+                "varr" => "<h1>HELLO</h1>",
                 'arr' => [3, 3, 5, 32, 4, 5, 3, 23, 5, 23]
             )
-        );
-        echo 'Welcome index student controller. <br>';
+        ); // it calls /views/hello.blade.php
+        echo 'home';
     }
+
 
     public function edit()
     {
@@ -127,6 +132,7 @@ class StudentController
             $img = $_FILES['img'];
             $student = new Student();
             $error = [];
+            // pass
             if (strlen($password) < 8) {
                 $error['pass']['sokytu'] = 'pass phai co it nhat 8 ky tu';
             }
@@ -139,9 +145,7 @@ class StudentController
             if (strlen($password) < 8) {
                 $error['user']['sokytu'] = 'name phai co it nhat 8 ky tu';
             }
-            if ($img['size'] > 4 * 1024 * 1024) {
-                $error['img']['img'] = 'file anh qua lon';
-            }
+            // user name
             if (!preg_match('/[a-z]/', $username)) {
                 $error['user']['wordLower'] = 'name phai co it nhat  1 chu thuong';
             }
@@ -151,6 +155,18 @@ class StudentController
             if (!preg_match('/\d/', $username)) {
                 $error['user']['number'] = 'name phai co it nhat 1 chu co';
             }
+            // img
+            if ($img['size'] > 4 * 1024 * 1024) {
+                $error['img']['img'] = 'file anh qua lon';
+            }
+            if (!empty($img)) {
+                $file_info = pathinfo($img['tmp_name']);
+                $extension = strtolower($file_info['extension']);
+                if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
+                    $error['img']['file'] = 'dinh dang file anh khong hop le';
+                }
+            }
+
 
             if (!empty($error)) {
                 $_SESSION['error'] = $error;

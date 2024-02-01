@@ -42,7 +42,9 @@ require_once("./vendor/autoload.php");
 
 use Anhnt\Lab56\controllers\Router;
 use Anhnt\Lab56\controllers\StudentController;
-
+// use Dotenv\Dotenv;
+// $dotenv = Dotenv::createImmutable(__DIR__);
+// $dotenv->load();
 if (isset($_SESSION['username'])) {
     echo '<br>xin chào: ' . $_SESSION['username'] . '<br>';
     // var_dump($_SESSION['username']);
